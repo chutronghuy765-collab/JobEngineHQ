@@ -1,0 +1,64 @@
+<svg width="200" height="70" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Beautiful gradient for the ring -->
+    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ff8e8e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d63384;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#9c27b0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+    </linearGradient>
+    <!-- Shadow for depth -->
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Gradient Ring (open circle, top portion) -->
+  <path
+    d="M 40 25 A 22 22 0 1 1 40 35"
+    stroke="url(#ringGradient)" 
+    stroke-width="5" 
+    fill="none" 
+    stroke-linecap="round"
+    filter="url(#softShadow)"
+    opacity="0.95"
+  />
+  
+  <!-- Professional Tie Icon -->
+  <g transform="translate(30, 15)">
+    <!-- Tie top (stylized infinity/figure-8 shape) -->
+    <ellipse cx="10" cy="6" rx="3" ry="2.5" fill="#1a365d" opacity="0.9"/>
+    <ellipse cx="10" cy="8" rx="3" ry="2.5" fill="#1a365d" opacity="0.9"/>
+    <!-- Tie knot -->
+    <rect x="8.5" y="8" width="3" height="3.5" rx="1" fill="#1a365d"/>
+    <!-- Tie blade (pointed bottom extending below ring) -->
+    <path 
+      d="M 10 11.5 L 7.5 22 L 10 24 L 12.5 22 Z" 
+      fill="#1a365d"
+    />
+    <!-- Tie center accent -->
+    <line x1="10" y1="11.5" x2="10" y2="22" stroke="#2563eb" stroke-width="0.8" opacity="0.5"/>
+  </g>
+
+  <!-- Text "Jobs" centered under the icon -->
+  <text
+    x="70"
+    y="60"
+    font-family="system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Inter', Arial, sans-serif"
+    font-size="22"
+    font-weight="700"
+    fill="#1a365d"
+    letter-spacing="2"
+  >
+    Jobs
+  </text>
+</svg>
