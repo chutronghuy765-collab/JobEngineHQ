@@ -2,6 +2,16 @@ import { useState, useEffect, useCallback } from 'react'
 import { jobService, CreateJobData, UpdateJobData } from '../services/jobService'
 import { Job } from '../supabase'
 
+// Fisher-Yates shuffle algorithm for randomizing array
+const shuffleArray = <T>(array: T[]): T[] => {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+
 export const useJobs = (filters?: {
   location?: string
   type?: string
@@ -18,7 +28,9 @@ export const useJobs = (filters?: {
       setLoading(true)
       setError(null)
       const data = await jobService.getJobs(filters)
-      setJobs(data)
+      // Shuffle jobs to randomize display order
+      const shuffledData = shuffleArray(data)
+      setJobs(shuffledData)
     } catch (err: any) {
       setError(err.message)
     } finally {

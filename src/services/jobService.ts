@@ -31,7 +31,7 @@ export const jobService = {
       .from('jobs')
       .select('*')
       .eq('is_active', true)
-      .order('created_at', { ascending: false })
+      // Removed order by to allow random shuffling
 
     if (filters?.location) {
       query = query.ilike('location', `%${filters.location}%`)
